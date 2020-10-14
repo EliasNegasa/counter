@@ -65,6 +65,7 @@ class App extends Component {
   };
 
   render() {
+    // #ffcd11
     const { user } = this.state;
     return (
       <React.Fragment>
@@ -92,7 +93,8 @@ class App extends Component {
                   return <MoviesForm {...props} user={user} />;
                 }}
               />
-              <Route path="/login" component={LoginForm} />
+              <Route path="/login/confirmed" component={LoginForm} />
+              <Route exact path="/login" component={LoginForm} />
               <Route path="/logout" component={Logout} />
               <Route path="/register" component={RegisterForm} />
               <Route path="/movies" component={Movies} />

@@ -1,6 +1,8 @@
 import React from "react";
 import Form from "./common/form";
 import auth from "../services/authService";
+import { Axios } from "axios";
+import { toast } from "react-toastify";
 
 const Joi = require("joi-browser");
 
@@ -30,13 +32,28 @@ class LoginForm extends Form {
     }
   };
 
+  confirm = () => {
+    console.log(window.location.pathname);
+    if (window.location.pathname === "/login/confirmed") {
+      // toast("Your Account is Confirmed");
+      return (
+        <div className="alert alert-success" role="alert">
+          Your account is Activated! Please log in.
+        </div>
+      );
+    }
+  };
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.renderInput("username", "Username")}
-        {this.renderInput("password", "Password", "password")}
-        {this.renderButton("Login")}
-      </form>
+      <React.Fragment>
+        {this.confirm()}
+        <form onSubmit={this.handleSubmit}>
+          {this.renderInput("username", "Username")}
+          {this.renderInput("password", "Password", "password")}
+          {this.renderButton("Login")}
+        </form>
+      </React.Fragment>
     );
   }
 }
